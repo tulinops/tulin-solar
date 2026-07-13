@@ -15,7 +15,7 @@ import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <div className="min-w-0 overflow-x-hidden">
+    <div className="min-w-0">
       <Header />
       <Hero />
       <TrustStrip />
