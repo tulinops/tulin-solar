@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Solar Quotation - SRI GOWRI PARAMESHWARA INFRA PROJECTS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #e9ecef;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.quotation {
+    background: white;
+    padding: 35px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   LETTER HEAD
+========================= */
+
+.letterhead {
+    text-align: center;
+    border-bottom: 3px solid #16823b;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.company-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #08752f;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.company-address {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.company-contact {
+    margin-top: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.gst {
+    color: #b00000;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.quotation-title {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.quotation-title h2 {
+    margin: 0;
+    color: #333;
+    text-decoration: underline;
+}
+
+/* =========================
+   CUSTOMER DETAILS
+========================= */
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.details-table td {
+    padding: 7px;
+    border: 1px solid #aaa;
+}
+
+.label {
+    font-weight: bold;
+    width: 18%;
+    background: #f2f7f3;
+}
+
+.customer-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 4px;
+    background: transparent;
+    font-size: 14px;
+}
+
+.customer-address {
+    width: 100%;
+    min-height: 55px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    font-size: 14px;
+}
+
+/* =========================
+   SYSTEM CAPACITY
+========================= */
+
+.capacity-section {
+    margin: 18px 0;
+    padding: 12px;
+    border: 1px solid #16823b;
+    background: #f7fbf8;
+    border-radius: 5px;
+}
+
+.capacity-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #08752f;
+}
+
+.capacity-input {
+    width: 180px;
+    padding: 9px 10px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    font-size: 15px;
+    outline: none;
+}
+
+.capacity-input:focus {
+    border-color: #16823b;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.brand-section {
+    margin: 20px 0;
+}
+
+.brand-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.brand-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.brand-button {
+    border: 2px solid #16823b;
+    background: white;
+    color: #16823b;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.brand-button:hover:not(:disabled) {
+    background: #e9f7ee;
+}
+
+.brand-button.active {
+    background: #16823b;
+    color: white;
+}
+
+.brand-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.brand-note {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+}
+
+#selectedBrand {
+    margin: 12px 0 0 0;
+    font-weight: bold;
+    color: #08752f;
+}
+
+#selectedCapacity {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    color: #08752f;
+}
+
+/* =========================
+   ITEMS TABLE
+========================= */
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.items-table th {
+    background: #16823b;
+    color: white;
+    padding: 9px;
+    border: 1px solid #0c5b29;
+    font-size: 13px;
+}
+
+.items-table td {
+    border: 1px solid #999;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.items-table input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 13px;
+}
+
+.description {
+    min-width: 150px;
+}
+
+.specification {
+    min-width: 220px;
+}
+
+.qty {
+    width: 65px !important;
+    text-align: center;
+}
+
+.rate {
+    width: 100px !important;
+    text-align: right;
+}
+
+.amount {
+    width: 120px !important;
+    text-align: right;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-btn {
+    margin-top: 10px;
+    background: #16823b;
+    color: white;
+    border: none;
+    padding: 9px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* =========================
+   TOTALS
+========================= */
+
+.totals-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.totals {
+    width: 400px;
+    border-collapse: collapse;
+}
+
+.totals td {
+    border: 1px solid #999;
+    padding: 8px;
+}
+
+.total-label {
+    font-weight: bold;
+    background: #f2f7f3;
+}
+
+.total-value {
+    text-align: right;
+    font-weight: bold;
+}
+
+.grand-total {
+    background: #16823b !important;
+    color: white;
+    font-size: 16px;
+}
+
+.gst-input {
+    width: 70px;
+    text-align: right;
+    border: 1px solid #aaa;
+    padding: 4px;
+}
+
+/* =========================
+   AMOUNT WORDS
+========================= */
+
+.amount-words {
+    margin-top: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* =========================
+   TERMS & CONDITIONS
+========================= */
+
+.terms {
+    margin-top: 30px;
+    border-top: 2px solid #16823b;
+    padding-top: 12px;
+    page-break-inside: avoid;
+}
+
+.terms h3 {
+    margin: 0 0 10px 0;
+    color: #08752f;
+}
+
+.terms textarea {
+    width: 100%;
+    height: 150px;
+    min-height: 150px;
+    border: 1px solid #aaa;
+    padding: 8px;
+    resize: none;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+    page-break-inside: avoid;
+}
+
+.signature {
+    width: 40%;
+    text-align: center;
+}
+
+.signature-line {
+    border-top: 1px solid #333;
+    padding-top: 7px;
+    margin-top: 50px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.action-buttons {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.action-buttons button {
+    padding: 12px 22px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.print-btn {
+    background: #08752f;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc3545;
+    color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    body {
+        padding: 5px;
+    }
+
+    .quotation {
+        padding: 15px;
+    }
+
+    .company-name {
+        font-size: 20px;
+    }
+
+    .items-table {
+        font-size: 11px;
+    }
+
+    .items-table th,
+    .items-table td {
+        padding: 3px;
+    }
+
+    .signature-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .signature {
+        width: 100%;
+    }
+
+    .capacity-input {
+        width: 100%;
+    }
+}
+
+/* =========================
+   PRINT SETTINGS
+========================= */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+        margin: 7mm;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .quotation {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    /* Hide buttons */
+    .action-buttons,
+    .brand-buttons,
+    .brand-title,
+    .brand-note,
+    .add-btn,
+    .remove-column,
+    .remove-btn {
+        display: none !important;
+    }
+
+    /* Capacity */
+    .capacity-section {
+        margin: 5px 0 !important;
+        padding: 5px !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .capacity-title {
+        display: inline !important;
+        font-size: 11px !important;
+        margin-right: 5px !important;
+    }
+
+    .capacity-input {
+        width: 80px !important;
+        border: none !important;
+        padding: 0 !important;
+        font-size: 11px !important;
+        font-weight: bold !important;
+    }
+
+    /* Brand display */
+    .brand-section {
+        margin: 5px 0 !important;
+    }
+
+    #selectedBrand,
+    #selectedCapacity {
+        display: block !important;
+        margin: 2px 0 !important;
+        font-size: 11px !important;
+        color: #000 !important;
+    }
+
+    /* INPUTS */
+    input,
+    textarea {
+        color: #000 !important;
+        background: transparent !important;
+    }
+
+    /* Customer address */
+    .customer-address {
+        height: 45px !important;
+        min-height: 45px !important;
+        resize: none !important;
+        overflow: hidden !important;
+        border: none !important;
+    }
+
+    /* Terms */
+    .terms {
+        margin-top: 12px !important;
+        padding-top: 7px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .terms h3 {
+        margin: 0 0 5px 0 !important;
+        font-size: 15px !important;
+    }
+
+    .terms textarea {
+        width: 100% !important;
+        height: 125px !important;
+        min-height: 125px !important;
+        max-height: 125px !important;
+        resize: none !important;
+        overflow: hidden !important;
+        border: none !important;
+        padding: 2px 4px !important;
+        font-size: 9px !important;
+        line-height: 1.15 !important;
+        white-space: pre-wrap !important;
+    }
+
+    /* Tables */
+    .details-table {
+        margin-bottom: 8px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .details-table td {
+        padding: 4px !important;
+    }
+
+    .items-table {
+        margin-top: 5px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .items-table th {
+        padding: 5px !important;
+        font-size: 10px !important;
+    }
+
+    .items-table td {
+        padding: 3px !important;
+        font-size: 10px !important;
+    }
+
+    .items-table input {
+        padding: 2px !important;
+        font-size: 10px !important;
+    }
+
+    /* Totals */
+    .totals-wrapper {
+        margin-top: 7px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .totals td {
+        padding: 5px !important;
+        font-size: 10px !important;
+    }
+
+    /* Amount words */
+    .amount-words {
+        margin-top: 7px !important;
+        padding: 5px !important;
+        font-size: 10px !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Signature */
+    .signature-section {
+        margin-top: 20px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .signature-line {
+        margin-top: 25px !important;
+        padding-top: 5px !important;
+        font-size: 10px !important;
+    }
+
+    /* Prevent page breaks */
+    .letterhead,
+    .quotation-title,
+    .details-table,
+    .capacity-section,
+    .brand-section,
+    .items-table,
+    .totals-wrapper,
+    .amount-words,
+    .terms,
+    .signature-section {
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="quotation" id="quotation">
+
+    <!-- =========================
+         LETTER HEAD
+    ========================== -->
+
+    <div class="letterhead">
+
+        <div class="company-name">
+            SRI GOWRI PARAMESHWARA INFRA PROJECTS
+        </div>
+
+        <div class="company-address">
+            OPP: VASAVI KANYAKA PARAMESHWARI TEMPLE,
+            TURAKABADI LANE, KAPU VEEDHI,
+            NARSIPATNAM, ANAKAPALLI DIST - 531116
+        </div>
+
+        <div class="company-contact">
+
+            <span class="gst">
+                GST NO: 37CKHPR0601M1ZZ
+            </span>
+
+            &nbsp; | &nbsp;
+
+            PHONE: 8688662366
+
+            &nbsp; | &nbsp;
+
+            EMAIL: SGPINFRA99@GMAIL.COM
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUOTATION TITLE
+    ========================== -->
+
+    <div class="quotation-title">
+        <h2>SOLAR SYSTEM QUOTATION</h2>
+    </div>
+
+
+    <!-- =========================
+         CUSTOMER DETAILS
+    ========================== -->
+
+    <table class="details-table">
+
+        <tr>
+
+            <td class="label">
+                Customer Name
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="customerName"
+                    class="customer-input"
+                    placeholder="Enter Customer Name">
+            </td>
+
+            <td class="label">
+                Quotation No.
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="quotationNo"
+                    class="customer-input"
+                    readonly>
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td class="label">
+                Customer Address
+            </td>
+
+            <td colspan="3">
+
+                <textarea
+                    id="customerAddress"
+                    class="customer-address"
+                    placeholder="Enter Customer Address"></textarea>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td class="label">
+                Quotation Date
+            </td>
+
+            <td>
+
+                <input
+                    type="date"
+                    id="quotationDate"
+                    class="customer-input">
+
+            </td>
+
+
+            <td class="label">
+                Validity
+            </td>
+
+            <td>
+
+                <input
+                    type="text"
+                    class="customer-input"
+                    value="15 Days">
+
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <!-- =========================
+         SYSTEM CAPACITY
+    ========================== -->
+
+    <div class="capacity-section">
+
+        <div class="capacity-title">
+            SYSTEM CAPACITY (kW)
+        </div>
+
+        <input
+            type="number"
+            id="systemCapacity"
+            class="capacity-input"
+            min="0.1"
+            step="0.1"
+            placeholder="Enter kW"
+            oninput="capacityChanged()">
+
+    </div>
+
+
+    <!-- =========================
+         BRAND SELECTION
+    ========================== -->
+
+    <div class="brand-section">
+
+        <div class="brand-title">
+            SELECT SOLAR BRAND
+        </div>
+
+        <div class="brand-buttons">
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('Waaree', this)"
+                disabled>
+                Waaree
+            </button>
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('Luminous', this)"
+                disabled>
+                Luminous
+            </button>
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('Microtek', this)"
+                disabled>
+                Microtek
+            </button>
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('ReNew', this)"
+                disabled>
+                ReNew
+            </button>
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('Vikram', this)"
+                disabled>
+                Vikram
+            </button>
+
+            <button
+                class="brand-button"
+                onclick="selectBrand('Adani', this)"
+                disabled>
+                Adani
+            </button>
+
+        </div>
+
+        <div class="brand-note" id="brandNote">
+            Please enter system capacity in kW first.
+        </div>
+
+        <div id="selectedCapacity">
+            System Capacity: Not Selected
+        </div>
+
+        <div id="selectedBrand">
+            Please select a brand.
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ITEMS TABLE
+    ========================== -->
+
+    <table class="items-table">
+
+        <thead>
+
+            <tr>
+
+                <th style="width:5%">
+                    S.No
+                </th>
+
+                <th style="width:18%">
+                    Description
+                </th>
+
+                <th style="width:30%">
+                    Specification / Details
+                </th>
+
+                <th style="width:8%">
+                    Qty
+                </th>
+
+                <th style="width:14%">
+                    Rate
+                </th>
+
+                <th style="width:15%">
+                    Amount
+                </th>
+
+                <th
+                    class="remove-column"
+                    style="width:7%">
+                    Remove
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="itemsBody">
+        </tbody>
+
+    </table>
+
+
+    <button
+        class="add-btn"
+        onclick="addItem()">
+        + Add Item
+    </button>
+
+
+    <!-- =========================
+         TOTALS
+    ========================== -->
+
+    <div class="totals-wrapper">
+
+        <table class="totals">
+
+            <tr>
+
+                <td class="total-label">
+                    Subtotal
+                </td>
+
+                <td class="total-value">
+                    ₹ <span id="subtotal">0.00</span>
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td class="total-label">
+
+                    GST (%)
+
+                    <input
+                        type="number"
+                        id="gstRate"
+                        class="gst-input"
+                        value="5"
+                        min="0"
+                        onchange="calculateTotals()">
+
+                </td>
+
+                <td class="total-value">
+                    ₹ <span id="gstAmount">0.00</span>
+                </td>
+
+            </tr>
+
+
+            <tr class="grand-total">
+
+                <td class="total-label grand-total">
+                    GRAND TOTAL
+                </td>
+
+                <td class="total-value grand-total">
+                    ₹ <span id="grandTotal">0.00</span>
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- =========================
+         AMOUNT IN WORDS
+    ========================== -->
+
+    <div class="amount-words">
+
+        <strong>
+            Amount in Words:
+        </strong>
+
+        <span id="amountWords">
+            Rupees Zero Only
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         TERMS & CONDITIONS
+    ========================== -->
+
+    <div class="terms">
+
+        <h3>
+            Terms & Conditions
+        </h3>
+
+        <textarea id="termsText">1. Prices are subject to the specifications mentioned in this quotation.
+2. Material Qunatity May vary as per site conditions. it may be more or less depending upon building structure.
+3. Installation and commissioning shall be carried out as agreed with the customer.
+4. Payment terms shall be mutually agreed between the customer and SRI GOWRI PARAMESHWARA INFRA PROJECTS.
+5. Quotation validity: 15 days from the date of quotation.
+6. Warranty will be as per the respective manufacturer's standard warranty terms.
+7. Any additional work or material not mentioned in this quotation will be charged separately.</textarea>
+
+    </div>
+
+
+    <!-- =========================
+         SIGNATURE
+    ========================== -->
+
+    <div class="signature-section">
+
+        <div class="signature">
+
+            <div class="signature-line">
+                Customer Signature
+            </div>
+
+        </div>
+
+
+        <div class="signature">
+
+            <div class="signature-line">
+
+                For SRI GOWRI PARAMESHWARA INFRA PROJECTS
+
+                <br><br>
+
+                Authorized Signatory
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ACTION BUTTONS
+========================== -->
+
+<div class="action-buttons">
+
+    <button
+        class="print-btn"
+        onclick="window.print()">
+        🖨 Print / Save PDF
+    </button>
+
+    <button
+        class="clear-btn"
+        onclick="clearQuotation()">
+        Clear Form
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   DATE
+========================= */
+
+function setCurrentDate() {
+
+    const today = new Date();
+
+    const yyyy =
+        today.getFullYear();
+
+    const mm =
+        String(today.getMonth() + 1)
+        .padStart(2, "0");
+
+    const dd =
+        String(today.getDate())
+        .padStart(2, "0");
+
+    document.getElementById("quotationDate").value =
+        yyyy + "-" + mm + "-" + dd;
+}
+
+
+/* =========================
+   SYSTEM CAPACITY
+========================= */
+
+function capacityChanged() {
+
+    const capacityInput =
+        document.getElementById("systemCapacity");
+
+    const capacity =
+        parseFloat(capacityInput.value);
+
+    const brandButtons =
+        document.querySelectorAll(".brand-button");
+
+    const selectedCapacity =
+        document.getElementById("selectedCapacity");
+
+    const brandNote =
+        document.getElementById("brandNote");
+
+
+    if (!capacity || capacity <= 0) {
+
+        brandButtons.forEach(btn => {
+            btn.disabled = true;
+            btn.classList.remove("active");
+        });
+
+        selectedCapacity.innerHTML =
+            "System Capacity: Not Selected";
+
+        brandNote.innerHTML =
+            "Please enter system capacity in kW first.";
+
+        document.getElementById("selectedBrand").innerHTML =
+            "Please select a brand.";
+
+        document.getElementById("itemsBody").innerHTML = "";
+
+        calculateTotals();
+
+        return;
+    }
+
+
+    brandButtons.forEach(btn => {
+        btn.disabled = false;
+    });
+
+
+    selectedCapacity.innerHTML =
+        "System Capacity: <strong>" +
+        capacity +
+        " kW</strong>";
+
+    brandNote.innerHTML =
+        "Now select your solar brand.";
+
+    /*
+       If brand is already selected,
+       reload items with new kW.
+    */
+
+    const activeBrand =
+        document.querySelector(".brand-button.active");
+
+    if (activeBrand) {
+
+        const brand =
+            activeBrand.textContent.trim();
+
+        loadBrandItems(brand);
+    }
+}
+
+
+/* =========================
+   BRAND SELECTION
+========================= */
+
+function selectBrand(brand, button) {
+
+    const capacity =
+        parseFloat(
+            document.getElementById("systemCapacity").value
+        );
+
+    if (!capacity || capacity <= 0) {
+
+        alert("Please enter System Capacity (kW) first.");
+
+        return;
+    }
+
+
+    document
+        .querySelectorAll(".brand-button")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+
+    button.classList.add("active");
+
+
+    document.getElementById("selectedBrand").innerHTML =
+        "Selected Brand: <strong>" +
+        brand +
+        "</strong>";
+
+
+    loadBrandItems(brand);
+}
+
+
+/* =========================
+   LOAD BRAND ITEMS
+========================= */
+
+function loadBrandItems(brand) {
+
+    const capacity =
+        parseFloat(
+            document.getElementById("systemCapacity").value
+        );
+
+
+    if (!capacity || capacity <= 0) {
+        return;
+    }
+
+
+    const itemsBody =
+        document.getElementById("itemsBody");
+
+    itemsBody.innerHTML = "";
+
+
+    const items = [
+
+        {
+            description:
+                brand + " Solar PV Module",
+
+            specification:
+                capacity +
+                " kW Solar Panel System - Mono PERC / TOPCon"
+        },
+
+        {
+            description:
+                "Solar Inverter",
+
+            specification:
+                capacity +
+                " kW " +
+                brand +
+                " Compatible On-Grid Solar Inverter"
+        },
+
+        {
+            description:
+                "Solar Mounting Structure",
+
+            specification:
+                "Hot Dip Galvanized / Aluminium Structure"
+        },
+
+        {
+            description:
+                "DC Solar Cable",
+
+            specification:
+                "UV Resistant DC Solar Cable"
+        },
+
+        {
+            description:
+                "AC Cable",
+
+            specification:
+                "Copper / Aluminium AC Cable"
+        },
+
+        {
+            description:
+                "MC4 Connectors",
+
+            specification:
+                "Original Compatible MC4 Connectors"
+        },
+
+        {
+            description:
+                "Earthing & Lightning Protection",
+
+            specification:
+                "Complete Earthing & Lightning Protection System"
+        },
+
+        {
+            description:
+                "Installation & Commissioning",
+
+            specification:
+                "Complete Solar System Installation & Commissioning"
+        }
+
+    ];
+
+
+    items.forEach(item => {
+
+        addItem(
+            item.description,
+            item.specification,
+            "",
+            ""
+        );
+
+    });
+
+}
+
+
+/* =========================
+   ADD ITEM
+========================= */
+
+function addItem(
+    description = "",
+    specification = "",
+    qty = "",
+    rate = ""
+) {
+
+    const tbody =
+        document.getElementById("itemsBody");
+
+    const row =
+        document.createElement("tr");
+
+    row.innerHTML = `
+
+        <td class="serial"></td>
+
+        <td>
+            <input
+                type="text"
+                class="description"
+                value="${description}"
+                placeholder="Description">
+        </td>
+
+        <td>
+            <input
+                type="text"
+                class="specification"
+                value="${specification}"
+                placeholder="Specification / Details">
+        </td>
+
+        <td>
+            <input
+                type="number"
+                class="qty"
+                value="${qty}"
+                min="0"
+                step="0.01"
+                oninput="calculateTotals()"
+                placeholder="Qty">
+        </td>
+
+        <td>
+            <input
+                type="number"
+                class="rate"
+                value="${rate}"
+                min="0"
+                step="0.01"
+                oninput="calculateTotals()"
+                placeholder="Rate">
+        </td>
+
+        <td>
+            <input
+                type="text"
+                class="amount"
+                value="0.00"
+                readonly>
+        </td>
+
+        <td class="remove-column">
+
+            <button
+                class="remove-btn"
+                onclick="removeItem(this)">
+                X
+            </button>
+
+        </td>
+    `;
+
+    tbody.appendChild(row);
+
+    updateSerialNumbers();
+
+    calculateTotals();
+}
+
+
+/* =========================
+   REMOVE ITEM
+========================= */
+
+function removeItem(button) {
+
+    button
+        .closest("tr")
+        .remove();
+
+    updateSerialNumbers();
+
+    calculateTotals();
+}
+
+
+/* =========================
+   SERIAL NUMBERS
+========================= */
+
+function updateSerialNumbers() {
+
+    const rows =
+        document.querySelectorAll(
+            "#itemsBody tr"
+        );
+
+    rows.forEach((row, index) => {
+
+        row.querySelector(".serial")
+            .textContent = index + 1;
+
+    });
+}
+
+
+/* =========================
+   CALCULATE TOTAL
+========================= */
+
+function calculateTotals() {
+
+    const rows =
+        document.querySelectorAll(
+            "#itemsBody tr"
+        );
+
+    let subtotal = 0;
+
+    rows.forEach(row => {
+
+        const qty =
+            parseFloat(
+                row.querySelector(".qty").value
+            ) || 0;
+
+        const rate =
+            parseFloat(
+                row.querySelector(".rate").value
+            ) || 0;
+
+        const amount =
+            qty * rate;
+
+        row.querySelector(".amount").value =
+            amount.toFixed(2);
+
+        subtotal += amount;
+
+    });
+
+
+    const gstRate =
+        parseFloat(
+            document.getElementById("gstRate").value
+        ) || 0;
+
+
+    const gstAmount =
+        subtotal * gstRate / 100;
+
+
+    const grandTotal =
+        subtotal + gstAmount;
+
+
+    document.getElementById("subtotal")
+        .textContent =
+        formatNumber(subtotal);
+
+
+    document.getElementById("gstAmount")
+        .textContent =
+        formatNumber(gstAmount);
+
+
+    document.getElementById("grandTotal")
+        .textContent =
+        formatNumber(grandTotal);
+
+
+    document.getElementById("amountWords")
+        .textContent =
+        numberToWords(
+            Math.round(grandTotal)
+        );
+}
+
+
+/* =========================
+   NUMBER FORMAT
+========================= */
+
+function formatNumber(number) {
+
+    return number.toLocaleString(
+        "en-IN",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    );
+}
+
+
+/* =========================
+   NUMBER TO WORDS
+========================= */
+
+function numberToWords(num) {
+
+    if (num === 0) {
+        return "Rupees Zero Only";
+    }
+
+
+    const ones = [
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen"
+    ];
+
+
+    const tens = [
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety"
+    ];
+
+
+    function convert(n) {
+
+        if (n < 20)
+            return ones[n];
+
+
+        if (n < 100)
+            return tens[Math.floor(n / 10)] +
+                (n % 10
+                    ? " " + ones[n % 10]
+                    : "");
+
+
+        if (n < 1000)
+            return ones[Math.floor(n / 100)] +
+                " Hundred" +
+                (n % 100
+                    ? " " + convert(n % 100)
+                    : "");
+
+
+        if (n < 100000)
+            return convert(
+                Math.floor(n / 1000)
+            ) +
+                " Thousand" +
+                (n % 1000
+                    ? " " + convert(n % 1000)
+                    : "");
+
+
+        if (n < 10000000)
+            return convert(
+                Math.floor(n / 100000)
+            ) +
+                " Lakh" +
+                (n % 100000
+                    ? " " + convert(n % 100000)
+                    : "");
+
+
+        return convert(
+            Math.floor(n / 10000000)
+        ) +
+            " Crore" +
+            (n % 10000000
+                ? " " + convert(n % 10000000)
+                : "");
+    }
+
+
+    return "Rupees " + convert(num) + " Only";
+}
+
+
+/* =========================
+   CLEAR FORM
+========================= */
+
+function clearQuotation() {
+
+    if (!confirm("Clear this quotation?")) {
+        return;
+    }
+
+
+    document.getElementById(
+        "customerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "customerAddress"
+    ).value = "";
+
+
+    document.getElementById(
+        "systemCapacity"
+    ).value = "";
+
+
+    generateQuotationNo();
+
+
+    document.getElementById(
+        "itemsBody"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "selectedBrand"
+    ).innerHTML =
+        "Please select a brand.";
+
+
+    document.getElementById(
+        "selectedCapacity"
+    ).innerHTML =
+        "System Capacity: Not Selected";
+
+
+    document.getElementById(
+        "brandNote"
+    ).innerHTML =
+        "Please enter system capacity in kW first.";
+
+
+    document
+        .querySelectorAll(".brand-button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+            btn.disabled = true;
+
+        });
+
+
+    setCurrentDate();
+
+    calculateTotals();
+}
+
+
+/* =========================
+   QUOTATION NUMBER
+========================= */
+
+function generateQuotationNo() {
+
+    const now = new Date();
+
+    const yyyy =
+        now.getFullYear();
+
+    const mm =
+        String(now.getMonth() + 1)
+        .padStart(2, "0");
+
+    const dd =
+        String(now.getDate())
+        .padStart(2, "0");
+
+    const hh =
+        String(now.getHours())
+        .padStart(2, "0");
+
+    const min =
+        String(now.getMinutes())
+        .padStart(2, "0");
+
+    const ss =
+        String(now.getSeconds())
+        .padStart(2, "0");
+
+
+    document.getElementById("quotationNo").value =
+        "SGP/2026-2027/" +
+        yyyy +
+        mm +
+        dd +
+        hh +
+        min +
+        ss;
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+window.onload = function() {
+
+    setCurrentDate();
+
+    generateQuotationNo();
+
+    /*
+       No default item now.
+       User must first enter kW
+       and select brand.
+    */
+
+    calculateTotals();
+};
+
+</script>
+
+</body>
+</html>
